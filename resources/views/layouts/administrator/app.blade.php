@@ -47,7 +47,8 @@
                             <span class="hide-menu">Admin</span>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="{{ route('admin.users') }}" aria-expanded="false">
+                            <a class="sidebar-link {{ request()->is('admin/users*') ? 'active' : '' }}"
+                                href="{{ route('admin.users') }}" aria-expanded="false">
                                 <span>
                                     <iconify-icon icon="solar:home-smile-bold-duotone" class="fs-6"></iconify-icon>
                                 </span>

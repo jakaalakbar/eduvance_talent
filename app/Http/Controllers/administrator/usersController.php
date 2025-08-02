@@ -10,7 +10,7 @@ class usersController extends Controller
 {
     public function index()
     {
-        $users = DB::table('users')->simplePaginate(15);
+        $users = DB::table('users')->paginate(1);
         return view("administrator.users.index", compact('users'));
     }
 }
