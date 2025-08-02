@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\administrator\usersController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,12 +17,25 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('landing.landing');
 });
-Route::get('/login', function () {
-    return view('landing.login');
-});
-Route::get('/register', function () {
-    return view('landing.register');
-});
-Route::get('/admin', function () {
-    return view('layouts.administrator.app');
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/home', function () {
+        return view('administrator.index');
+    })->name('home');
+
+    Route::middleware(['role:0'])->group(function () {
+        Route::prefix('admin')->group(function () {
+            Route::controller(usersController::class)->group(function () {
+                Route::get('/users', 'index')->name("admin.users");
+            });
+        });
+    });
+
+    Route::middleware(['role:1'])->group(function () {
+        Route::prefix('student')->group(function () {
+            Route::get('/dashboard', function () {
+                return 'Halaman Pengaturan Student';
+            });
+        });
+    });
 });
