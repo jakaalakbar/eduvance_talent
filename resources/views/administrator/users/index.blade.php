@@ -57,8 +57,13 @@
                                     @endif
                                 </td>
                                 <td>
-                                    <button class="btn btn-sm btn-warning">Edit</button>
-                                    <button class="btn btn-sm btn-danger">Delete</button>
+                                    <button class="btn btn-sm btn-warning">
+                                        Edit
+                                    </button>
+                                    <a href="{{ route('admin.users.destroy', $user->id) }}" class="btn btn-sm btn-danger"
+                                        data-confirm-delete="true">
+                                        Delete
+                                    </a>
                                 </td>
                             </tr>
                         @endforeach

@@ -27,6 +27,7 @@ Route::middleware(['auth'])->group(function () {
         Route::prefix('admin')->group(function () {
             Route::controller(usersController::class)->group(function () {
                 Route::get('/users', 'index')->name("admin.users");
+                Route::delete('/users/delete/{id}', 'destroy')->name("admin.users.destroy");
             });
         });
     });
