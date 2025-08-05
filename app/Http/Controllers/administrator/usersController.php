@@ -23,6 +23,41 @@ class usersController extends Controller
         return view("administrator.users.index", compact('users'));
     }
 
+    public function show($id)
+    {
+        $user = DB::table('users')
+            ->where('id', (int)$id)
+            ->first();
+        if (is_null($user)) {
+            Alert::error('User tidak ditemukan!');
+            return redirect()->back();
+        }
+
+        return view("administrator.users.show", compact('user'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $user = DB::table('users')
+            ->where('id', (int)$id)
+            ->first();
+        if (is_null($user)) {
+            Alert::error('User tidak ditemukan!');
+            return redirect()->back();
+        }
+
+        $user = DB::table('users')
+            ->where('id', (int)$id)
+            ->update([
+                "name" => $request["name"],
+                "username" => $request["username"],
+                "email" => $request["email"],
+                "password" => $request["password"],
+            ]);
+
+        return redirect()->route("admin.users");
+    }
+
     public function destroy($id)
     {
         DB::table('users')

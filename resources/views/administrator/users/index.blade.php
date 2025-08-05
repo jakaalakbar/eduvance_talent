@@ -57,9 +57,9 @@
                                     @endif
                                 </td>
                                 <td>
-                                    <button class="btn btn-sm btn-warning">
+                                    <a href="{{ route('admin.users.show', $user->id) }}" class="btn btn-sm btn-warning">
                                         Edit
-                                    </button>
+                                    </a>
                                     <a href="{{ route('admin.users.destroy', $user->id) }}" class="btn btn-sm btn-danger"
                                         data-confirm-delete="true">
                                         Delete

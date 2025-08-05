@@ -27,6 +27,8 @@ Route::middleware(['auth'])->group(function () {
         Route::prefix('admin')->group(function () {
             Route::controller(usersController::class)->group(function () {
                 Route::get('/users', 'index')->name("admin.users");
+                Route::get('/users/{id}', 'show')->name("admin.users.show");
+                Route::put('/users/update/{id}', 'update')->name("admin.users.update");
                 Route::delete('/users/delete/{id}', 'destroy')->name("admin.users.destroy");
             });
         });
