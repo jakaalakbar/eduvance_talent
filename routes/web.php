@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\administrator\PaymentsController;
 use App\Http\Controllers\administrator\usersController;
 use Illuminate\Support\Facades\Route;
 
@@ -30,6 +31,14 @@ Route::middleware(['auth'])->group(function () {
                 Route::get('/users/{id}', 'show')->name("admin.users.show");
                 Route::put('/users/update/{id}', 'update')->name("admin.users.update");
                 Route::delete('/users/delete/{id}', 'destroy')->name("admin.users.destroy");
+            });
+
+            Route::controller(PaymentsController::class)->group(function () {
+                Route::get("/payments", "index")->name("payments.index");
+                Route::get("/payments/{id}", "show")->name("payments.show");
+                Route::post("/payments", "store")->name("payments.store");
+                Route::put("/payments/{id}", "update")->name("payments.update");
+                Route::delete("/payments/delete/{id}", "update")->name("payments.destroy");
             });
         });
     });

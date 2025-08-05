@@ -3,18 +3,23 @@
 @section('content')
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title d-flex align-items-center gap-2 mb-4">
-                Traffic Overview
-                <span>
-                    <iconify-icon icon="solar:question-circle-bold" class="fs-7 d-flex text-muted" data-bs-toggle="tooltip"
-                        data-bs-placement="top" data-bs-custom-class="tooltip-success"
-                        data-bs-title="Traffic Overview"></iconify-icon>
-                </span>
-            </h5>
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <div>
+                    <h5 class="card-title">Users</h5>
+                </div>
+                <div>
+                    <form action="{{ route('admin.users') }}" method="get">
+                        <div class="input-group">
+                            <input type="text" class="form-control" name="search" placeholder="Cari...">
+                            <button type="submit" class="input-group-text" id="basic-addon1">Ayo Cari</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
             <div class="table-responsive">
                 <table class="table text-nowrap align-middle mb-0">
                     <thead>
-                        <tr class="border-2 border-bottom border-primary border-0">
+                        <tr class="border-bottom border-primary border-0">
                             <th scope="col">Name</th>
                             <th scope="col">Username</th>
                             <th scope="col">Email</th>
