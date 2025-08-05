@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Enums\UserRole;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -15,9 +14,8 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        $data = [];
-        for ($i = 0; $i < 50; $i++) {
-            $data[] = [
+        for ($i = 0; $i < 400; $i++) {
+            $data = [
                 'name' => fake()->name(),
                 'username' => fake()->userName(),
                 'email' => fake()->email(),
@@ -25,7 +23,7 @@ class UserSeeder extends Seeder
                 'role' => UserRole::UNKNOWN->value,
                 'password' => Hash::make("password"),
             ];
+            DB::table('users')->insert($data);
         }
-        DB::table('users')->insert($data);
     }
 }
