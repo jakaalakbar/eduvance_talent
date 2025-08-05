@@ -34,11 +34,11 @@ Route::middleware(['auth'])->group(function () {
             });
 
             Route::controller(PaymentsController::class)->group(function () {
-                Route::get("/payments", "index")->name("payments.index");
-                Route::get("/payments/{id}", "show")->name("payments.show");
-                Route::post("/payments", "store")->name("payments.store");
-                Route::put("/payments/{id}", "update")->name("payments.update");
-                Route::delete("/payments/delete/{id}", "update")->name("payments.destroy");
+                Route::get("/payments", "index")->name("admin.payments");
+                Route::get("/payments/{id}", "show")->name("admin.payments.show");
+                Route::post("/payments", "store")->name("admin.payments.store");
+                Route::put("/payments/{id}", "update")->name("admin.payments.update");
+                Route::delete("/payments/delete/{id}", "update")->name("admin.payments.destroy");
             });
         });
     });
